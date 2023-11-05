@@ -3,6 +3,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health = 100.0f; // Enemy's initial health
+    
+    [SerializeField] public float damage;
 
     public void TakeDamage(float damage)
     {

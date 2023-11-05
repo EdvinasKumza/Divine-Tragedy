@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72778b50620e3ed89b2db2a70edd4850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   player: {fileID: 128882006}
   speed: 3
   StopDistance: 0.5
@@ -231,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  damage: 10
 --- !u!4 &128882006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3842878387579790266, guid: 822c327fd9b2aa7cdb0c2e6c820fc4e8, type: 3}

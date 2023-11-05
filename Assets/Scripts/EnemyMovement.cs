@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class EnemieMovement : MonoBehaviour
 {
-    //probably should be moved out
-    [SerializeField] private float damage;
-    
     [SerializeField] private Transform player;
 
     [SerializeField] private float speed;
@@ -49,7 +46,7 @@ public class EnemieMovement : MonoBehaviour
             
             if (player != null)
             {
-                player.TakeDamage(damage);
+                player.TakeDamage(this.gameObject.GetComponent<Enemy>().damage);
             }
             
             Flee = true;
