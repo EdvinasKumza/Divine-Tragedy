@@ -33,6 +33,26 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
     }
 
+    public void ResetSpeed(float originalSpeed)
+    {
+        speed = originalSpeed;
+    }
+
+    public void ResetJumpSpeed(float originalJumpSpeed)
+    {
+        jumpSpeed = originalJumpSpeed;
+    }
+    
+    public void ModifySpeed(float speedBoostMultiplier)
+    {
+        speed *= speedBoostMultiplier;
+    }
+
+    public void ModifyJumpSpeed(float jumpSpeedMultiplier)
+    {
+        jumpSpeed *= jumpSpeedMultiplier;
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Ground")

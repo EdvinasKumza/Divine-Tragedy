@@ -1,14 +1,22 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class ChestInteraction : MonoBehaviour
 {
     public Animator chestAnimator;
     private bool isPlayerNear = false;
+    public PowerUpManagerScript powerUpManager;
 
-    private void Update()
+    private void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            powerUpManager = player.GetComponent<PowerUpManagerScript>();
+        }
+    }
+        private void Update()
     {
         // Check if the player is near the chest and has pressed the 'E' key
         if (isPlayerNear && Input.GetKeyDown(KeyCode.E))
@@ -46,5 +54,19 @@ public class ChestInteraction : MonoBehaviour
         chestAnimator.SetTrigger("OpenChest");
         // Disable the collider so it can't be opened again
         GetComponent<Collider2D>().enabled = false;
+        ApplyPowerUp();
+    }
+
+    private void ApplyPowerUp()
+    {
+        // Get a random power up
+        PowerUpType[] powerUpTypes = (PowerUpType[])Enum.GetValues(typeof(PowerUpType));
+        int randomIndex = UnityEngine.Random.Range(0, powerUpTypes.Length);
+        PowerUpType randomPowerUp = powerUpTypes[randomIndex];
+
+        // Debug.Log("Chosen power-up: " + randomPowerUp);
+
+        powerUpManager.ActivatePowerUp(randomPowerUp);
+
     }
 }
