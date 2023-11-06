@@ -42,6 +42,13 @@ public class EnemieMovement : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            PlayerScript player = col.gameObject.GetComponent<PlayerScript>();
+            
+            if (player != null)
+            {
+                player.TakeDamage(this.gameObject.GetComponent<Enemy>().damage);
+            }
+            
             Flee = true;
         }
     }
