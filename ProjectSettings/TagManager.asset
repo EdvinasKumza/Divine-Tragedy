@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -15,6 +16,7 @@ TagManager:
   - UI
   - Player
   - Enemy
+  - Chest
   - 
   - 
   - 
@@ -37,9 +39,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Background
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2574353483
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
