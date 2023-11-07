@@ -7,12 +7,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     private Rigidbody2D body;
     private bool grounded;
-    
-    
+
+    //subscribe to event
+    private void OnEnable()
+    {
+        PlayerScript.OnPlayerDeath += DisablePlayerMovement;
+    }
+
+    private void OnDisable()
+    {
+        PlayerScript.OnPlayerDeath -= DisablePlayerMovement;
+    }
+
     private void Awake()
     {
         //get the rigidbody from the player object
         body = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        EnablePlayerMovement();
     }
 
     private void Update()
@@ -59,5 +74,15 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    private void DisablePlayerMovement()
+    {
+        body.bodyType = RigidbodyType2D.Static;
+    }
+    
+    private void EnablePlayerMovement()
+    {
+        body.bodyType = RigidbodyType2D.Dynamic;
     }
 }
