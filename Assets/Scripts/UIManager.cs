@@ -67,7 +67,9 @@ public class UIManeger : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        //TODO
+        Time.timeScale = 1;
+        isPaused = false;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
