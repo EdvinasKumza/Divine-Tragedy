@@ -17,7 +17,7 @@ TagManager:
   - Player
   - Enemy
   - Chest
-  - 
+  - Platform
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platform
+    uniqueID: 907146961
     locked: 0
