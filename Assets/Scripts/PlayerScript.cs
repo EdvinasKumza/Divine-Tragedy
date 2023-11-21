@@ -6,13 +6,30 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] public float health;
+    [SerializeField] public int currentXP;
+    [SerializeField] public int maxLevelXP;
 
     public static event Action OnPlayerDeath;
     public HealthBarScript healthBar;
+    public XPBarScript xpBar;
+    public int currentLevel = 1;
+    
+    //subscribe to event
+    private void OnEnable()
+    {
+        Enemy.OnEnemyDeath += IncreaseXP;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnEnemyDeath -= IncreaseXP;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         healthBar.SetMaxHealth(health);
+        xpBar.SetMaxXP(maxLevelXP);
     }
 
     // Update is called once per frame
@@ -33,5 +50,18 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Player die");
             OnPlayerDeath?.Invoke();
         }
+    }
+
+    public void IncreaseXP(int xp)
+    {
+        currentXP += xp;
+
+        if (currentXP >= maxLevelXP)
+        {
+            ++currentLevel;
+            currentXP -= maxLevelXP;
+        }
+        
+        xpBar.SetXP(currentXP);
     }
 }
