@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDataPersistence
 {
     [SerializeField] public float health;
     [SerializeField] public int currentXP;
@@ -13,16 +13,18 @@ public class PlayerScript : MonoBehaviour
     public HealthBarScript healthBar;
     public XPBarScript xpBar;
     public int currentLevel = 1;
+
+    public int gold;
     
     //subscribe to event
     private void OnEnable()
     {
-        Enemy.OnEnemyDeath += IncreaseXP;
+        Enemy.OnEnemyDeath += KillEnemy;
     }
 
     private void OnDisable()
     {
-        Enemy.OnEnemyDeath -= IncreaseXP;
+        Enemy.OnEnemyDeath -= KillEnemy;
     }
     
     // Start is called before the first frame update
@@ -37,7 +39,17 @@ public class PlayerScript : MonoBehaviour
     {
         
     }
+
+    public void LoadData(GameData data)
+    {
+        this.gold = data.gold;
+    }
     
+    public void SaveData(ref GameData data)
+    {
+        data.gold = this.gold;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -52,8 +64,10 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void IncreaseXP(int xp)
+    public void KillEnemy(int xp)
     {
+        IncreaseGold();
+        
         currentXP += xp;
 
         if (currentXP >= maxLevelXP)
@@ -63,5 +77,10 @@ public class PlayerScript : MonoBehaviour
         }
         
         xpBar.SetXP(currentXP);
+    }
+
+    public void IncreaseGold()
+    {
+        gold += 1;
     }
 }

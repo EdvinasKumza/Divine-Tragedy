@@ -14,13 +14,13 @@ public class XPBarScript : MonoBehaviour
     public void Start()
     {
         text = gameObject.GetComponentInChildren<TMP_Text>();
+        text.text = "0";
     }
 
     public void SetMaxXP(int xp)
     {
         slider.maxValue = xp;
         slider.value = 0;
-        text.text = "0";
     }
     
     public void SetXP(int xp)
