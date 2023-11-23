@@ -191,3 +191,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   damage: 10
+  xp: 50
