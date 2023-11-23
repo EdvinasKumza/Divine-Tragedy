@@ -7,8 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void LoadLevelSelect()
     {
-        //TODO
-        SceneManager.LoadScene("Level0");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void LoadUpgradeMenu()

@@ -6,10 +6,20 @@ using UnityEngine;
 public class GameData
 {
     public int gold;
-
+    // Witch level have been unlocked 0 - Tutorial, 1 - Level1 ...
+    public bool[] levelUnlock = new bool [10];
+    
     // new game
     public GameData()
     {
         this.gold = 0;
+
+        // Set level unlock status
+        levelUnlock[0] = true;
+        levelUnlock[1] = true;
+        for (int i = 2; i < 10; ++i)
+        {
+            levelUnlock[i] = false;
+        }
     }
 }
