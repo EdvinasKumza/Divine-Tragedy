@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public static event Action OnPlayerDeath;
     public HealthBarScript healthBar;
     public XPBarScript xpBar;
+    public GoldCounter goldCounter;
     public int currentLevel = 1;
 
     public int gold;
@@ -43,6 +44,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.gold = data.gold;
+        goldCounter.SetGoldAmount(gold);
     }
     
     public void SaveData(ref GameData data)
@@ -82,5 +84,6 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public void IncreaseGold()
     {
         gold += 1;
+        goldCounter.SetGoldAmount(gold);
     }
 }
