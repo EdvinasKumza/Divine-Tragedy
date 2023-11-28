@@ -3,12 +3,15 @@ using TMPro;
 
 public class GoldTree : MonoBehaviour, IDataPersistence
 {
+    public static GoldTree instance;
     private TMP_Text textComponent;
     private int goldAmount;
 
     void Awake()
     {
         textComponent = GetComponentInChildren<TMP_Text>();
+
+        instance = this;
     }
 
     public void LoadData(GameData data)

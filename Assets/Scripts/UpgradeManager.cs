@@ -35,6 +35,7 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
     {
         if (upgradeName == "MaxHP" && !gameData.maxHPUpgradeUnlocked && gameData.gold >= 50)
         {
+            GoldTree.instance.SpendGold(50);
             gameData.maxHPUpgradeUnlocked = true;
             DataPersistenceManager.instance.SaveGame();
             

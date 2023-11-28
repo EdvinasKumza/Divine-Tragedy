@@ -20,10 +20,6 @@ public class MaxHPUpgradeButton : MonoBehaviour
             upgradeButton.interactable = false;
             costText.text = "Unlocked";
         }
-        else
-        {
-
-        }
     }
 
     private void UpdateUI()
