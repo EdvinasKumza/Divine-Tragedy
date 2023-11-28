@@ -16,6 +16,10 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public int currentLevel = 1;
 
     public int gold;
+    private bool isShieldActive = false;
+    private bool shieldOnCooldown = false;
+    private float shieldCooldown = 60f;
+    private float shieldDuration = 3f;
     
     //subscribe to event
     private void OnEnable()
@@ -38,7 +42,10 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.F) && !shieldOnCooldown)
+        {
+            ActivateShield();
+        }
     }
 
     public void LoadData(GameData data)
@@ -54,15 +61,18 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        
-        healthBar.SetHealth(health);
-
-        if (health <= 0)
+        if(!isShieldActive)
         {
-            health = 0;
-            Debug.Log("Player die");
-            OnPlayerDeath?.Invoke();
+            health -= damage;
+            
+            healthBar.SetHealth(health);
+
+            if (health <= 0)
+            {
+                health = 0;
+                Debug.Log("Player die");
+                OnPlayerDeath?.Invoke();
+            }
         }
     }
 
@@ -85,5 +95,30 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     {
         gold += 1;
         goldCounter.SetGoldAmount(gold);
+    }
+
+    public void IncreaseMaxHp()
+    {
+        health *= 2;
+    }
+
+    public void ActivateShield()
+    {
+        isShieldActive = true;
+        StartCoroutine(ShieldDuration());
+        StartCoroutine(ShieldCooldown());
+    }
+    
+    public IEnumerator ShieldDuration()
+    {
+        yield return new WaitForSeconds(shieldDuration);
+        isShieldActive = false;
+    }
+
+    public IEnumerator ShieldCooldown()
+    {
+        shieldOnCooldown = true;
+        yield return new WaitForSeconds(shieldCooldown);
+        shieldOnCooldown = false;
     }
 }

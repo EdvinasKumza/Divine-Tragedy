@@ -21,5 +21,9 @@ public class GameData
         {
             levelUnlock[i] = false;
         }
+        new UpgradeTree("HigherFireRate", false, 100, new List<string>(), IncreaseFireRate);
+        new UpgradeTree("HigherHP", false, 100, new List<string>(), IncreaseHP);
+        new UpgradeTree("Shield", false, 200, new List<string> { "HigherHP" }, ActivateShield);
+        new UpgradeTree("TimeSlow", false, 200, new List<string> { "HigherFireRate" }, ActivateTimeSlow);
     }
 }
