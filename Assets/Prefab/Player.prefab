@@ -79,9 +79,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 142
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -204,7 +204,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  healthBar: {fileID: 0}
+  currentXP: 0
+  maxLevelXP: 0
+  healthBar: {fileID: 6935575785796918063, guid: bebb130d8e67a0251a2d861c5f29ca2f, type: 3}
+  xpBar: {fileID: 6610876408506674, guid: 430a75c5e8fb5f21499daf4144579195, type: 3}
+  goldCounter: {fileID: 2963837743615818254, guid: 702ef98cfcd4e5bcca2a33a91c00bf25, type: 3}
+  currentLevel: 1
+  gold: 0
 --- !u!114 &2536773061164815020
 MonoBehaviour:
   m_ObjectHideFlags: 0
