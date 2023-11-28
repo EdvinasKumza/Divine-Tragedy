@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletTutorial : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     public float damage = 10.0f;
     public GameObject hitEffect;
@@ -9,7 +9,7 @@ public class BulletTutorial : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            EnemyTutorial enemy = other.GetComponent<EnemyTutorial>();
 
             if (enemy != null)
             {
