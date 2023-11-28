@@ -33,16 +33,26 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
 
     public bool PurchaseUpgrade(string upgradeName)
     {
-        // Check if the player has enough gold and the MaxHP upgrade is not unlocked
         if (upgradeName == "MaxHP" && !gameData.maxHPUpgradeUnlocked && gameData.gold >= 50)
         {
-            gameData.gold -= 50;
             gameData.maxHPUpgradeUnlocked = true;
-            
             DataPersistenceManager.instance.SaveGame();
             
             return true;
         }
+        return false;
+    }
+
+    public bool IsUpgradePermanentlyUnlocked(string upgradeName)
+    {
+        if (gameData != null)
+        {
+            if (upgradeName == "MaxHP")
+            {
+                return gameData.maxHPUpgradeUnlocked;
+            }
+        }
+
         return false;
     }
 }

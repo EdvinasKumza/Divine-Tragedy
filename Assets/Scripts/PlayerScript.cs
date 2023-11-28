@@ -55,6 +55,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         
         if (data.maxHPUpgradeUnlocked)
         {
+            Debug.Log("Max HP Upgrade is unlocked. Increasing Max HP.");
             IncreaseMaxHp();
         }
     }
