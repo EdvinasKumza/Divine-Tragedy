@@ -8,11 +8,13 @@ public class GameData
     public int gold;
     // Witch level have been unlocked 0 - Tutorial, 1 - Level1 ...
     public bool[] levelUnlock = new bool [10];
+    public bool maxHPUpgradeUnlocked = false;
     
     // new game
     public GameData()
     {
         this.gold = 0;
+        this.maxHPUpgradeUnlocked = false;
 
         // Set level unlock status
         levelUnlock[0] = true;
@@ -21,9 +23,5 @@ public class GameData
         {
             levelUnlock[i] = false;
         }
-        // new UpgradeTree("IncreaseFireRate", false, 100, new List<string>(), IncreaseFireRate);
-        // new UpgradeTree("IncreaseMaxHP", false, 100, new List<string>(), IncreaseMaxHP);
-        // new UpgradeTree("Shield", false, 200, new List<string> { "HigherHP" }, ActivateShield);
-        // new UpgradeTree("TimeSlow", false, 200, new List<string> { "HigherFireRate" }, ActivateTimeSlow);
     }
 }

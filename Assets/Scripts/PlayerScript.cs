@@ -52,6 +52,11 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     {
         this.gold = data.gold;
         goldCounter.SetGoldAmount(gold);
+        
+        if (data.maxHPUpgradeUnlocked)
+        {
+            IncreaseMaxHp();
+        }
     }
     
     public void SaveData(ref GameData data)

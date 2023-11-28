@@ -12,7 +12,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadUpgradeMenu()
     {
-        //TODO
+        SceneManager.LoadScene("UpgradeTree");
     }
 
     public void LoadSettingsMenu()
