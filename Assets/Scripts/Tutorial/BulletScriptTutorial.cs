@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletTutorial : MonoBehaviour
 {
     public float damage = 10.0f;
     public GameObject hitEffect;
