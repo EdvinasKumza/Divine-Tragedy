@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     }
 
-    void Update()
+    /*void Update()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+*/
 
     void OnTriggerEnter2D(Collider2D other)
     {

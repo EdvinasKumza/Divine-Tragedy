@@ -170,4 +170,4 @@ MonoBehaviour:
   damage: 10
   hitEffect: {fileID: 0}
   pierce: 1
-  maxDistance: 99999
+  maxDistance: 99
