@@ -81,5 +81,4 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
 
         return false;
     }
-
 }

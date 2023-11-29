@@ -6,7 +6,6 @@ public class UpgradeButton : MonoBehaviour
 {
     public Button upgradeButton;
     public TextMeshProUGUI costText;
-    public UpgradeManager upgradeManager;
     public Image lockImage;
     public TextMeshProUGUI buttonText;
 
@@ -18,7 +17,7 @@ public class UpgradeButton : MonoBehaviour
         UpdateUI();
     }
 
-    public void InitializeUI()
+    public void InitializeUI(UpgradeManager upgradeManager)
     {
         if (upgradeManager.IsUpgradePermanentlyUnlocked(upgradeName))
         {
@@ -38,13 +37,11 @@ public class UpgradeButton : MonoBehaviour
 
     private void OnUpgradeButtonClick()
     {
-        // Check if the upgrade can be purchased
         if (CanPurchaseUpgrade())
         {
-            if (upgradeManager.PurchaseUpgrade(upgradeName))
-            {
-                UpdateUI();
-            }
+            // Assume the UpgradeManager is accessible globally or through a singleton
+            UpgradeManager.instance.PurchaseUpgrade(upgradeName);
+            UpdateUI();
         }
         else
         {
@@ -54,12 +51,12 @@ public class UpgradeButton : MonoBehaviour
 
     private bool CanPurchaseUpgrade()
     {
-        if (upgradeName == "FireRate" && !upgradeManager.IsUpgradePermanentlyUnlocked("MaxHP"))
+        if (upgradeName == "FireRate" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP"))
         {
             return false;
         }
 
-        if (upgradeName == "Shield" && !upgradeManager.IsUpgradePermanentlyUnlocked("MaxHP"))
+        if (upgradeName == "Shield" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP"))
         {
             return false;
         }
@@ -69,19 +66,6 @@ public class UpgradeButton : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (upgradeManager.IsUpgradePermanentlyUnlocked(upgradeName))
-        {
-            upgradeButton.interactable = false;
-            costText.gameObject.SetActive(false);
-            lockImage.gameObject.SetActive(false);
-            buttonText.text = "BOUGHT";
-        }
-        else
-        {
-            upgradeButton.interactable = true;
-            lockImage.gameObject.SetActive(true);
-            costText.gameObject.SetActive(true);
-            buttonText.text = "PURCHASE";
-        }
+        InitializeUI(UpgradeManager.instance);
     }
 }
