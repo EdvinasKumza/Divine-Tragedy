@@ -4,6 +4,20 @@ public class Bullet : MonoBehaviour
 {
     public float damage = 10.0f;
     public GameObject hitEffect;
+    public int pierce = 1;
+
+    public float maxDistance = 10f;
+    private float distanceTraveled = 0f;
+     
+    void Update()
+    {
+        distanceTraveled += 20f * Time.deltaTime;
+        if(distanceTraveled > maxDistance)
+        {
+            Destroy(gameObject);
+        }
+
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +28,7 @@ public class Bullet : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+                --pierce;
             }
 
             if (hitEffect != null)
@@ -21,7 +36,11 @@ public class Bullet : MonoBehaviour
                 Instantiate(hitEffect, transform.position, Quaternion.identity);
             }
 
-            Destroy(gameObject);
+            if (pierce <= 0)
+            {
+                Destroy(gameObject);
+            }
+
         }
         else if(other.CompareTag("Player")) 
         { 

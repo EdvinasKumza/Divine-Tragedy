@@ -15,6 +15,8 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public int currentLevel = 1;
 
     public int gold;
+
+    public UIManeger UI;
     
     //subscribe to event
     private void OnEnable()
@@ -74,6 +76,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         {
             ++currentLevel;
             currentXP -= maxLevelXP;
+            UI.LevelUp();
         }
         
         xpBar.SetXP(currentXP);
