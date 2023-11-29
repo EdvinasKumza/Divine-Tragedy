@@ -8,7 +8,11 @@ public class UIManeger : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
+    public GameObject chooseStartingWeapon;
+    public GameObject levelUp;
     public static bool isPaused;
+
+    public Shooting weapons;
 
     //subscribe to event
     private void OnEnable()
@@ -24,6 +28,7 @@ public class UIManeger : MonoBehaviour
     public void Start()
     {
         pauseMenu.SetActive(false);
+        StartWeaponChoice();
     }
 
     public void Update()
@@ -63,6 +68,38 @@ public class UIManeger : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
+    }
+
+    public void StartWeaponChoice()
+    {
+        chooseStartingWeapon.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void StartWeaponBow()
+    {
+        weapons.SetStartingWeapon("bow");
+        chooseStartingWeapon.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void StartWeaponSword()
+    {
+        weapons.SetStartingWeapon("sword");
+        chooseStartingWeapon.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void LevelUp()
+    {
+        levelUp.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void LevelUpClose(string upgrade)
+    {
+        weapons.Upgrade(upgrade);
+        levelUp.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void GoToMainMenu()

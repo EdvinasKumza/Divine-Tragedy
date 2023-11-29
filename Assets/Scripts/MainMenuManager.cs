@@ -4,25 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
-{
-
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+{   
     public void LoadLevelSelect()
     {
-        SceneManager.LoadScene("LevelSelect");
+        //TODO
+        SceneManager.LoadScene("Level0");
     }
 
     public void LoadUpgradeMenu()
     {
-        SceneManager.LoadScene("UpgradeTree");
+        //TODO
     }
 
     public void LoadSettingsMenu()
     {
-        SceneManager.LoadScene("Credits");
+        //TODO
     }
 
     public void QuitGame()
