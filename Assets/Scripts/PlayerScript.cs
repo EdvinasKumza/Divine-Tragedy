@@ -20,6 +20,9 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public int currentLevel = 1;
 
     public int gold;
+    
+    public UIManeger UI;
+    
     private bool isShieldActive = false;
     private bool shieldOnCooldown = false;
     private float shieldCooldown = 60f;
@@ -121,6 +124,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         {
             ++currentLevel;
             currentXP -= maxLevelXP;
+            UI.LevelUp();
         }
         
         xpBar.SetXP(currentXP);
