@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] public float damage;
     [SerializeField] public int xp;
-
     public void TakeDamage(float damage)
     {
         health -= damage;

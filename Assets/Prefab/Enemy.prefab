@@ -107,6 +107,7 @@ MonoBehaviour:
   ReturnDistance: 2.5
   Flee: 0
   enemyHitSound: {fileID: 8300000, guid: 5388077a6a062e04ea4259d43ae34296, type: 3}
+  spriteRenderer: {fileID: 5734608909848936202}
 --- !u!61 &7587692275394407008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,6 +195,7 @@ MonoBehaviour:
   health: 30
   damage: 10
   xp: 50
+  explosionPrefab: {fileID: 417761080263594737, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
 --- !u!95 &-8947009951539705983
 Animator:
   serializedVersion: 5
