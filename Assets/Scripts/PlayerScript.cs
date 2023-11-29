@@ -29,11 +29,15 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     private void OnEnable()
     {
         Enemy.OnEnemyDeath += KillEnemy;
+        //for tutorial
+        EnemyTutorial.OnEnemyDeath += KillEnemy;
     }
 
     private void OnDisable()
     {
         Enemy.OnEnemyDeath -= KillEnemy;
+        //for tutorial
+        EnemyTutorial.OnEnemyDeath -= KillEnemy;
     }
     
     // Start is called before the first frame update
