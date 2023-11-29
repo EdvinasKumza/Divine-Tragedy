@@ -32,4 +32,9 @@ public class Shooting : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = gunTransform.right * bulletSpeed;
     }
+
+    public void IncreaseFireRate()
+    {
+        fireRate *= 2;
+    }
 }
