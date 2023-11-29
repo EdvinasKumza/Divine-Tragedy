@@ -6,9 +6,18 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private GameObject beginningScreen;
     [SerializeField] private GameObject xpScreen;
+    [SerializeField] private GameObject goldScreen;
+    [SerializeField] private GameObject levelUPScreen;
+    [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject dummyEnemy;
+    [SerializeField] private GameObject dummyEnemy2;
 
     private bool beginning = true;
-    private bool killEnamy = false;
+    private bool killEnamyXp = false;
+    private bool killEnamyGold = false;
+    private bool levelUP = false;
+
+    private bool enemy2 = false;
     
     private void OnEnable()
     {
@@ -26,6 +35,9 @@ public class TutorialManager : MonoBehaviour
         beginningScreen.SetActive(beginning);
         xpScreen.SetActive(false);
         Time.timeScale = 0;
+        gun.SetActive(false);
+        dummyEnemy.SetActive(false);
+        dummyEnemy2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,12 +51,29 @@ public class TutorialManager : MonoBehaviour
                 beginning = false;
                 Time.timeScale = 1;
             }
-        }else if (killEnamy)
+        }else if (killEnamyXp)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                killEnamy = false;
+                killEnamyXp = false;
                 xpScreen.SetActive(false);
+                goldScreen.SetActive(true);
+                killEnamyGold = true;
+            }
+        }else if (killEnamyGold)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                goldScreen.SetActive(false);
+                killEnamyGold = false;
+                Time.timeScale = 1;
+            }
+        }else if (levelUP)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                levelUPScreen.SetActive(false);
+                levelUP = false;
                 Time.timeScale = 1;
             }
         }
@@ -52,8 +81,18 @@ public class TutorialManager : MonoBehaviour
     
     public void KillEnemy(int xp)
     {
-        xpScreen.SetActive(true);
-        killEnamy = true;
-        Time.timeScale = 0;
+        if (enemy2)
+        {
+            levelUPScreen.SetActive(true);
+            Time.timeScale = 0;
+            levelUP = true;
+        }
+        else
+        {
+            xpScreen.SetActive(true);
+            killEnamyXp = true;
+            Time.timeScale = 0;
+            enemy2 = true;
+        }
     }
 }
