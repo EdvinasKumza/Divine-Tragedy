@@ -12,6 +12,7 @@ public class EnemieMovement : MonoBehaviour
 
     public bool Flee = false;
     public AudioClip enemyHitSound; // Add this field to assign the enemy hit sound
+    public SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -30,8 +31,10 @@ public class EnemieMovement : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.position);
+        float previousPosition = transform.position.x;
 
         if (distance <= StopDistance) return;
+ 
 
         if (!Flee)
         {
@@ -41,6 +44,15 @@ public class EnemieMovement : MonoBehaviour
         {
             if (distance > ReturnDistance) Flee = false;
             transform.position = Vector2.MoveTowards(transform.position, player.position, -1 * speed * Time.deltaTime);
+        }
+
+        if (transform.position.x > previousPosition)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
         }
     }
 
