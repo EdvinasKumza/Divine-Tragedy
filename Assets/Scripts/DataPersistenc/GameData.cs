@@ -25,8 +25,7 @@ public class GameData
         this.healthRegenerationUnlocked = false;
         // Set level unlock status
         levelUnlock[0] = true;
-        levelUnlock[1] = true;
-        for (int i = 2; i < 10; ++i)
+        for (int i = 1; i < 10; ++i)
         {
             levelUnlock[i] = false;
         }
