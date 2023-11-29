@@ -23,7 +23,7 @@ public class LevelSelectManager : MonoBehaviour, IDataPersistence
     }
     public void Start()
     {
-        for (int i = 2; i < 10; ++i)
+        for (int i = 1; i < 10; ++i)
         {
             if (levelUnlock[i])
             {
@@ -43,7 +43,7 @@ public class LevelSelectManager : MonoBehaviour, IDataPersistence
     
     public void LoadTutorial()
     {
-        //TODO
+        SceneManager.LoadScene("Tutorial");
     }
     
     public void LoadLevel0()
@@ -53,7 +53,10 @@ public class LevelSelectManager : MonoBehaviour, IDataPersistence
     
     public void LoadLevel1()
     {
-        //TODO
+        if (levelUnlock[1])
+        {
+            SceneManager.LoadScene("Level0");
+        }
     }
     
     public void LoadLevel2()
