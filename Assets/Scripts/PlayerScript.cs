@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     [SerializeField] public int maxLevelXP;
 
     private bool shieldUnlocked = false;
+    private bool goldIncreaseUnlocked = false;
+    private bool healthRegenerationUnlocked = false; 
+
     public static event Action OnPlayerDeath;
     public HealthBarScript healthBar;
     public XPBarScript xpBar;
@@ -47,6 +50,13 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         {
             ActivateShield();
         }
+
+        if (healthRegenerationUnlocked)
+        {
+            health += Time.deltaTime; // Regenerate health over time
+            health = Mathf.Clamp(health, 0, health); // Ensure health doesn't exceed maxHealth
+            healthBar.SetHealth(health);
+        }
     }
 
     public void LoadData(GameData data)
@@ -56,18 +66,28 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         
         if (data.maxHPUpgradeUnlocked)
         {
-            Debug.Log("Max HP Upgrade is unlocked. Increasing Max HP.");
+            // Debug.Log("Max HP Upgrade is unlocked. Increasing Max HP.");
             IncreaseMaxHp();
         }
         if(data.shieldUnlocked)
         {
             shieldUnlocked = true;
         }
+        if(data.goldIncreaseUnlocked)
+        {
+            goldIncreaseUnlocked = true;
+        }
+        if(data.healthRegenerationUnlocked)
+        {
+            healthRegenerationUnlocked = true;
+        }
     }
     
     public void SaveData(ref GameData data)
     {
         data.gold = this.gold;
+        data.goldIncreaseUnlocked = this.goldIncreaseUnlocked;
+        data.healthRegenerationUnlocked = this.healthRegenerationUnlocked;
     }
 
     public void TakeDamage(float damage)
@@ -104,7 +124,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
     public void IncreaseGold()
     {
-        gold += 1;
+        gold += (goldIncreaseUnlocked ? 2 : 1); // Double gold if gold increase upgrade is unlocked
         goldCounter.SetGoldAmount(gold);
     }
 
@@ -133,3 +153,4 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         shieldOnCooldown = false;
     }
 }
+

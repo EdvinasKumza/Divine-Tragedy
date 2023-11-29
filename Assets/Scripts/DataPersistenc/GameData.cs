@@ -11,6 +11,8 @@ public class GameData
     public bool maxHPUpgradeUnlocked = false;
     public bool fireRateUnlocked = false;
     public bool shieldUnlocked = false;
+    public bool goldIncreaseUnlocked = false;
+    public bool healthRegenerationUnlocked = false;
     
     // new game
     public GameData()
@@ -19,7 +21,8 @@ public class GameData
         this.maxHPUpgradeUnlocked = false;
         this.fireRateUnlocked = false;
         this.shieldUnlocked = false;
-
+        this.goldIncreaseUnlocked = false;
+        this.healthRegenerationUnlocked = false;
         // Set level unlock status
         levelUnlock[0] = true;
         levelUnlock[1] = true;

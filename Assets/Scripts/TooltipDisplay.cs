@@ -29,7 +29,7 @@ public class TooltipDisplay : MonoBehaviour
     void Update()
     {
         transform.position = Input.mousePosition;
-        Vector3 offset = new Vector3(150, -10); // Adjust this offset as needed
+        Vector3 offset = new Vector3(50, -50); // Adjust this offset as needed
         transform.position = Input.mousePosition + offset;
     }
 

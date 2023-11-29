@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class UpgradeManager : MonoBehaviour, IDataPersistence
 {
     private GameData gameData;
 
     public static UpgradeManager instance;
-
 
     private void Awake()
     {
@@ -39,25 +37,42 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
             GoldTree.instance.SpendGold(50);
             gameData.maxHPUpgradeUnlocked = true;
             DataPersistenceManager.instance.SaveGame();
-            
+
             return true;
         }
-        else if (upgradeName == "FireRate" && !gameData.fireRateUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 100)
+        else if (upgradeName == "FireRate" && !gameData.fireRateUnlocked && gameData.healthRegenerationUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 100)
         {
             GoldTree.instance.SpendGold(100);
             gameData.fireRateUnlocked = true;
             DataPersistenceManager.instance.SaveGame();
-            
+
             return true;
         }
-         else if (upgradeName == "Shield" && !gameData.shieldUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 100)
+        else if (upgradeName == "Shield" && !gameData.shieldUnlocked && gameData.goldIncreaseUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 100)
         {
             GoldTree.instance.SpendGold(100);
             gameData.shieldUnlocked = true;
             DataPersistenceManager.instance.SaveGame();
-            
+
             return true;
         }
+        else if (upgradeName == "GoldIncrease" && !gameData.goldIncreaseUnlocked && gameData.maxHPUpgradeUnlocked  && gameData.gold >= 75)
+        {
+            GoldTree.instance.SpendGold(75);
+            gameData.goldIncreaseUnlocked = true;
+            DataPersistenceManager.instance.SaveGame();
+
+            return true;
+        }
+        else if (upgradeName == "HealthRegeneration" && !gameData.healthRegenerationUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 75)
+        {
+            GoldTree.instance.SpendGold(75);
+            gameData.healthRegenerationUnlocked = true;
+            DataPersistenceManager.instance.SaveGame();
+
+            return true;
+        }
+
         return false;
     }
 
@@ -69,16 +84,25 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
             {
                 return gameData.maxHPUpgradeUnlocked;
             }
-            if(upgradeName == "FireRate")
+            if (upgradeName == "FireRate")
             {
                 return gameData.fireRateUnlocked;
             }
-            if(upgradeName == "Shield")
+            if (upgradeName == "Shield")
             {
                 return gameData.shieldUnlocked;
+            }
+            if (upgradeName == "GoldIncrease")
+            {
+                return gameData.goldIncreaseUnlocked;
+            }
+            if (upgradeName == "HealthRegeneration")
+            {
+                return gameData.healthRegenerationUnlocked;
             }
         }
 
         return false;
     }
 }
+

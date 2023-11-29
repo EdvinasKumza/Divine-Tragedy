@@ -8,12 +8,12 @@ public class UpgradeButton : MonoBehaviour
     public TextMeshProUGUI costText;
     public Image lockImage;
     public TextMeshProUGUI buttonText;
-
     public string upgradeName;
 
     private void Start()
     {
         upgradeButton.onClick.AddListener(OnUpgradeButtonClick);
+        InitializeUI(UpgradeManager.instance);
         UpdateUI();
     }
 
@@ -39,7 +39,6 @@ public class UpgradeButton : MonoBehaviour
     {
         if (CanPurchaseUpgrade())
         {
-            // Assume the UpgradeManager is accessible globally or through a singleton
             UpgradeManager.instance.PurchaseUpgrade(upgradeName);
             UpdateUI();
         }
@@ -51,15 +50,28 @@ public class UpgradeButton : MonoBehaviour
 
     private bool CanPurchaseUpgrade()
     {
-        if (upgradeName == "FireRate" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP"))
+        if (upgradeName == "FireRate" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP") 
+        && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("GoldIncrease"))
         {
             return false;
         }
 
-        if (upgradeName == "Shield" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP"))
+        if (upgradeName == "Shield" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP") 
+        && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("HealthRegeneration"))
         {
             return false;
         }
+
+        if (upgradeName == "HealthRegeneration" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP"))
+        {
+            return false;
+        }
+
+        if (upgradeName == "GoldIncrease" && !UpgradeManager.instance.IsUpgradePermanentlyUnlocked("MaxHP"))
+        {
+            return false;
+        }
+
 
         return true;
     }
