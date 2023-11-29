@@ -22,7 +22,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadSettingsMenu()
     {
-        //TODO
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()
