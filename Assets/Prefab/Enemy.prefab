@@ -105,6 +105,7 @@ MonoBehaviour:
   StopDistance: 0.5
   ReturnDistance: 2.5
   Flee: 0
+  enemyHitSound: {fileID: 8300000, guid: 5388077a6a062e04ea4259d43ae34296, type: 3}
 --- !u!61 &7587692275394407008
 BoxCollider2D:
   m_ObjectHideFlags: 0
