@@ -97,6 +97,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         data.healthRegenerationUnlocked = this.healthRegenerationUnlocked;
     }
 
+    [SerializeField]
     public void TakeDamage(float damage)
     {
         if(!isShieldActive)
@@ -107,6 +108,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
             if (health <= 0)
             {
+                DataPersistenceManager.instance.SaveGame();
                 health = 0;
                 Debug.Log("Player die");
                 OnPlayerDeath?.Invoke();
