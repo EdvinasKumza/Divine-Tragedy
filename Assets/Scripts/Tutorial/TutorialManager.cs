@@ -52,6 +52,7 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
+        gun.GetComponent<Shooting>().SetStartingWeapon("bow");
         beginningScreen.SetActive(beginning);
         xpScreen.SetActive(false);
         goldScreen.SetActive(false);
