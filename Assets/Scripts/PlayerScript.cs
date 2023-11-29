@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     [SerializeField] public int currentXP;
     [SerializeField] public int maxLevelXP;
 
+    private bool shieldUnlocked = false;
     public static event Action OnPlayerDeath;
     public HealthBarScript healthBar;
     public XPBarScript xpBar;
@@ -42,7 +43,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && !shieldOnCooldown)
+        if(Input.GetKeyDown(KeyCode.F) && !shieldOnCooldown && shieldUnlocked)
         {
             ActivateShield();
         }
@@ -57,6 +58,10 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         {
             Debug.Log("Max HP Upgrade is unlocked. Increasing Max HP.");
             IncreaseMaxHp();
+        }
+        if(data.shieldUnlocked)
+        {
+            shieldUnlocked = true;
         }
     }
     

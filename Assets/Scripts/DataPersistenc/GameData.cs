@@ -9,12 +9,16 @@ public class GameData
     // Witch level have been unlocked 0 - Tutorial, 1 - Level1 ...
     public bool[] levelUnlock = new bool [10];
     public bool maxHPUpgradeUnlocked = false;
+    public bool fireRateUnlocked = false;
+    public bool shieldUnlocked = false;
     
     // new game
     public GameData()
     {
         this.gold = 0;
         this.maxHPUpgradeUnlocked = false;
+        this.fireRateUnlocked = false;
+        this.shieldUnlocked = false;
 
         // Set level unlock status
         levelUnlock[0] = true;

@@ -9,6 +9,7 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
 
     public static UpgradeManager instance;
 
+
     private void Awake()
     {
         if (instance != null)
@@ -41,6 +42,22 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
             
             return true;
         }
+        else if (upgradeName == "FireRate" && !gameData.fireRateUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 100)
+        {
+            GoldTree.instance.SpendGold(100);
+            gameData.fireRateUnlocked = true;
+            DataPersistenceManager.instance.SaveGame();
+            
+            return true;
+        }
+         else if (upgradeName == "Shield" && !gameData.shieldUnlocked && gameData.maxHPUpgradeUnlocked && gameData.gold >= 100)
+        {
+            GoldTree.instance.SpendGold(100);
+            gameData.shieldUnlocked = true;
+            DataPersistenceManager.instance.SaveGame();
+            
+            return true;
+        }
         return false;
     }
 
@@ -52,8 +69,17 @@ public class UpgradeManager : MonoBehaviour, IDataPersistence
             {
                 return gameData.maxHPUpgradeUnlocked;
             }
+            if(upgradeName == "FireRate")
+            {
+                return gameData.fireRateUnlocked;
+            }
+            if(upgradeName == "Shield")
+            {
+                return gameData.shieldUnlocked;
+            }
         }
 
         return false;
     }
+
 }
