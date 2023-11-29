@@ -129,6 +129,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39408840}
+  - component: {fileID: 39408842}
+  m_Layer: 31
+  m_Name: BG3 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39408840
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2634,16 +2647,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1307622252}
     - target: {fileID: 3260673766002478119, guid: 05e12808cb70bec46b1951f54297f848, type: 3}
+      propertyPath: maxLevelXP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260673766002478119, guid: 05e12808cb70bec46b1951f54297f848, type: 3}
       propertyPath: goldCounter
       value: 
       objectReference: {fileID: 1788140765}
     - target: {fileID: 4059083273265329688, guid: 05e12808cb70bec46b1951f54297f848, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.148
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4059083273265329688, guid: 05e12808cb70bec46b1951f54297f848, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.025
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4059083273265329688, guid: 05e12808cb70bec46b1951f54297f848, type: 3}
       propertyPath: m_LocalPosition.z
