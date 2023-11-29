@@ -178,6 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   jumpSpeed: 7
+  jumpSound: {fileID: 8300000, guid: 55633eb92270d7845b0172cce2e44b98, type: 3}
+  groundMoveSound: {fileID: 8300000, guid: d89ac363df13c1a479a1d7cd7b1fc4a5, type: 3}
 --- !u!114 &882722434150591742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +214,7 @@ MonoBehaviour:
   goldCounter: {fileID: 0}
   currentLevel: 1
   gold: 0
+  playerHitSound: {fileID: 8300000, guid: 5388077a6a062e04ea4259d43ae34296, type: 3}
 --- !u!114 &2536773061164815020
 MonoBehaviour:
   m_ObjectHideFlags: 0
