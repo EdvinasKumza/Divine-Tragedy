@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4831392208577759363, guid: 4754e2103fc93b84b8b8eaafbd1fcabd, type: 3}
+  player: {fileID: 4059083273265329688, guid: a6442de4b26537c4689bbf10bb05742d, type: 3}
   spawnInterval: 4
