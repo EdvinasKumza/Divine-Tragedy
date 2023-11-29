@@ -19,6 +19,17 @@ public class Bullet : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        if (screenPos.x < -1000 || screenPos.x > Screen.width+1000 || screenPos.y < -1000 || screenPos.y > Screen.height+1000)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))

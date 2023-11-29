@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuManager : MonoBehaviour
-{   
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void LoadLevelSelect()
     {
-        //TODO
-        SceneManager.LoadScene("Level0");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void LoadUpgradeMenu()
     {
-        //TODO
+        SceneManager.LoadScene("UpgradeTree");
     }
 
     public void LoadSettingsMenu()
     {
-        //TODO
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()

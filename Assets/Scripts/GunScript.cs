@@ -192,4 +192,9 @@ public class Shooting : MonoBehaviour
         
     }
 
+
+    public void IncreaseFireRate()
+    {
+        fireRate *= 2;
+    }
 }
