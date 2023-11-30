@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Enemy
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -11,6 +14,10 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Enemy
+  - Chest
+  - Platform
   - 
   - 
   - 
@@ -32,12 +39,14 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2574353483
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platform
+    uniqueID: 907146961
     locked: 0
