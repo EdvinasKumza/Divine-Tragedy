@@ -2228,6 +2228,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1160627435}
     - target: {fileID: 3260673766002478119, guid: a6442de4b26537c4689bbf10bb05742d, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 674130678}
+    - target: {fileID: 3260673766002478119, guid: a6442de4b26537c4689bbf10bb05742d, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 313092650}
