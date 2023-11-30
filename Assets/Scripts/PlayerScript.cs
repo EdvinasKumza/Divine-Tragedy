@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour, IDataPersistence
@@ -8,6 +9,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     [SerializeField] public float health;
     [SerializeField] public int currentXP;
     [SerializeField] public int maxLevelXP;
+    [SerializeField] public GameObject victory;
 
     private bool shieldUnlocked = false;
     private bool goldIncreaseUnlocked = false;
@@ -97,6 +99,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         data.healthRegenerationUnlocked = this.healthRegenerationUnlocked;
     }
 
+    [SerializeField]
     public void TakeDamage(float damage)
     {
         if(!isShieldActive)
@@ -107,6 +110,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
             if (health <= 0)
             {
+                DataPersistenceManager.instance.SaveGame();
                 health = 0;
                 Debug.Log("Player die");
                 OnPlayerDeath?.Invoke();
@@ -123,6 +127,12 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         if (currentXP >= maxLevelXP)
         {
             ++currentLevel;
+            if(currentLevel > 2)
+            {
+                DataPersistenceManager.instance.SaveGame();
+                Time.timeScale = 0;
+                victory.SetActive(true);
+            }
             currentXP -= maxLevelXP;
             UI.LevelUp();
         }
