@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080912065381995950, guid: e667b6cf7503190edbb03ddcca2f8cb5, type: 3}
       propertyPath: xp
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8441247627657791159, guid: e667b6cf7503190edbb03ddcca2f8cb5, type: 3}
       propertyPath: player
