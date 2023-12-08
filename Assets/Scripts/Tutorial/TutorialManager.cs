@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,8 +43,10 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
     
     public void SaveData(ref GameData data)
     {
+        Debug.Log("save game");
         if (complete)
         {
+            Debug.Log("save comlite true");
             data.levelUnlock[1] = true;
         }
     }
@@ -52,6 +55,7 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
+        gun.GetComponent<Shooting>().SetStartingWeapon("bow");
         beginningScreen.SetActive(beginning);
         xpScreen.SetActive(false);
         goldScreen.SetActive(false);
@@ -115,10 +119,11 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
         }
         else if (enemy3)
         {
-            victoryScreen.SetActive(true);
-            Time.timeScale = 0;
+            Debug.Log("kill enamy3");
             complete = true;
+            victoryScreen.SetActive(true);
             DataPersistenceManager.instance.SaveGame();
+            Time.timeScale = 0;
         }
         else
         {

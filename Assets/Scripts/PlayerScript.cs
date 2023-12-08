@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour, IDataPersistence
@@ -8,6 +9,8 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     [SerializeField] public float health;
     [SerializeField] public int currentXP;
     [SerializeField] public int maxLevelXP;
+    [SerializeField] public GameObject victory;
+    [SerializeField] public int maxLevel = 5;
 
     private bool shieldUnlocked = false;
     private bool goldIncreaseUnlocked = false;
@@ -20,6 +23,9 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public int currentLevel = 1;
 
     public int gold;
+    
+    public UIManeger UI;
+    
     private bool isShieldActive = false;
     private bool shieldOnCooldown = false;
     private float shieldCooldown = 60f;
@@ -94,6 +100,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         data.healthRegenerationUnlocked = this.healthRegenerationUnlocked;
     }
 
+    [SerializeField]
     public void TakeDamage(float damage)
     {
         if(!isShieldActive)
@@ -104,6 +111,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
 
             if (health <= 0)
             {
+                DataPersistenceManager.instance.SaveGame();
                 health = 0;
                 Debug.Log("Player die");
                 OnPlayerDeath?.Invoke();
@@ -120,7 +128,14 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         if (currentXP >= maxLevelXP)
         {
             ++currentLevel;
+            if(currentLevel >= maxLevel)
+            {
+                DataPersistenceManager.instance.SaveGame();
+                Time.timeScale = 0;
+                victory.SetActive(true);
+            }
             currentXP -= maxLevelXP;
+            UI.LevelUp();
         }
         
         xpBar.SetXP(currentXP);
@@ -135,6 +150,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public void IncreaseMaxHp()
     {
         health *= 2;
+        healthBar.SetMaxHealth(health);
     }
 
     public void ActivateShield()

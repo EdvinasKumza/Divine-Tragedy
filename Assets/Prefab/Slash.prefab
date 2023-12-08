@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5182846748158818855}
   - component: {fileID: -805178254930625153}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.3676, y: 0.2889, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalScale: {x: 2, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f105cdbb8fe6f1289b0f4d55fc9dc30c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4eecd575f0b262b4193b24c23d06ea67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,8 +122,19 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -2.08, y: 0}
-  - {x: 2.08, y: 0}
+  - {x: -0.10108376, y: 0.0064670574}
+  - {x: -0.16386753, y: -0.13575006}
+  - {x: -0.13492161, y: -0.16768222}
+  - {x: -0.0035329568, y: -0.16282195}
+  - {x: 0.07978384, y: -0.14188763}
+  - {x: 0.160129, y: -0.055537567}
+  - {x: 0.16079657, y: 0.034775395}
+  - {x: 0.15432972, y: 0.08004475}
+  - {x: 0.06058733, y: 0.14227502}
+  - {x: -0.031131815, y: 0.16554506}
+  - {x: -0.16987997, y: 0.16547813}
+  - {x: -0.1600123, y: 0.10610097}
+  - {x: -0.09939409, y: 0.008622721}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -167,7 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac2596cf8b5ee446998f683167bb987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 50
   hitEffect: {fileID: 0}
-  pierce: 1
-  maxDistance: 99
+  pierce: 5
+  maxDistance: 3
+  destroyTime: 0.1
