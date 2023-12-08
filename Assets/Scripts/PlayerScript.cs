@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     [SerializeField] public int currentXP;
     [SerializeField] public int maxLevelXP;
     [SerializeField] public GameObject victory;
+    [SerializeField] public int maxLevel = 5;
 
     private bool shieldUnlocked = false;
     private bool goldIncreaseUnlocked = false;
@@ -127,7 +128,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
         if (currentXP >= maxLevelXP)
         {
             ++currentLevel;
-            if(currentLevel > 2)
+            if(currentLevel >= maxLevel)
             {
                 DataPersistenceManager.instance.SaveGame();
                 Time.timeScale = 0;
