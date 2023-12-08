@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080912065381995950, guid: e667b6cf7503190edbb03ddcca2f8cb5, type: 3}
       propertyPath: xp
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8441247627657791159, guid: e667b6cf7503190edbb03ddcca2f8cb5, type: 3}
       propertyPath: player
@@ -3286,7 +3286,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Use A and D to move left and right
 
-    Use spacebar to jump'
+    Use spacebar to jump
+
+    In game
+    you can also wall jump of platforms'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

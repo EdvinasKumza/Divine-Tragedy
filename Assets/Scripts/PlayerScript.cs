@@ -149,6 +149,7 @@ public class PlayerScript : MonoBehaviour, IDataPersistence
     public void IncreaseMaxHp()
     {
         health *= 2;
+        healthBar.SetMaxHealth(health);
     }
 
     public void ActivateShield()
